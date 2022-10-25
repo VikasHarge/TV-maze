@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import parse from 'html-react-parser';
 
 const DisplayShows = ({showDataActor, loaded, searchBy, showDataShow}) => {
  
@@ -18,11 +19,10 @@ const DisplayShows = ({showDataActor, loaded, searchBy, showDataShow}) => {
                             ></img>
                             <div className='cart_detail'>
                                 <h1 className='show_name'>{shows._embedded.show.name}</h1>
-                                <p className='show_summery' >{shows._embedded.show.summary !== null ? shows._embedded.show.summary.replaceAll('<p>', '') : "--" }</p>
+                                <p className='show_summery' >{shows._embedded.show.summary !== null ? parse(shows._embedded.show.summary)  : "--" }</p>
                                 <p className='show_rating' >⭐ {shows._embedded.show.rating.average !== null ? shows._embedded.show.rating.average : "0.0" }</p>
                             </div>
                         </div>
-
             }) : loaded && searchBy === "Shows" ?  
             showDataShow.map((shows, i)=>{
                 return <div className='show_cart' key={i}>
@@ -33,14 +33,13 @@ const DisplayShows = ({showDataActor, loaded, searchBy, showDataShow}) => {
                             ></img>
                             <div className='cart_detail'>
                                 <h1 className='show_name'>{shows.show.name}</h1>
-                                <p className='show_summery' >{shows.show.summary !== null ? shows.show.summary.replaceAll('<p>', '') : "--" }</p>
+                                <p className='show_summery' >{shows.show.summary !== null ? parse(shows.show.summary) : "--" }</p>
                                 <p className='show_rating' >⭐ {shows.show.rating.average !== null ? shows.show.rating.average : "0.0" }</p>
                             </div>
                         </div>
             }) : <><h1>no data to show</h1></>
             }
         </div>
-      
     </div>
   )
 }

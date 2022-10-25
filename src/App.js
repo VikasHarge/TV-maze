@@ -1,11 +1,6 @@
 import './App.css';
 import MovieHome from './components/MovieHome';
 
-const p = {
-  name : " vikas ",
-  age : 24
-}
-
 
 function App() {
 
