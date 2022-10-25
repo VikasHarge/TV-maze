@@ -87,18 +87,10 @@ const MovieHome = () => {
             actorData.filter((item)=>{
 
                 if(item.person.name.toLowerCase().includes(searchKey.toLowerCase())){
-                    // console.log(item.person.name.toLowerCase()+ " from api");
-                    // console.log(searchKey.toLowerCase()+" ower own");
-                    // console.log(item.person.id + " api id");
                     setActorId(item.person.id)
-                    // console.log(actorId + " id in setId inside if loop");
                     return item;
                 }
-
-                // console.log(actorId + " id in setId inside filter");
-
             })
-        
         }
 
         useEffect(()=>{
@@ -120,9 +112,6 @@ const MovieHome = () => {
             setActorId(0)
 
         }, [actorId])
-
-
-
 
     const submitHandle =(e)=>{
         e.preventDefault()
